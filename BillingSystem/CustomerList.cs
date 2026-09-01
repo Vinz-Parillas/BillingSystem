@@ -16,5 +16,10 @@ namespace BillingSystem
         {
             InitializeComponent();
         }
+
+        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
