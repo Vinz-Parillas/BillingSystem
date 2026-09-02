@@ -41,20 +41,20 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitle.Location = new Point(29, 32);
+            lblTitle.Location = new Point(120, 24);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(383, 32);
+            lblTitle.Size = new Size(136, 25);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "Billing System v1.0 - Login (J.D.)";
+            lblTitle.Text = "Billing System";
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             lblTitle.Click += label1_Click;
             // 
             // lblUsernsme
             // 
             lblUsernsme.AutoSize = true;
-            lblUsernsme.Location = new Point(17, 121);
+            lblUsernsme.Location = new Point(15, 91);
             lblUsernsme.Name = "lblUsernsme";
-            lblUsernsme.Size = new Size(78, 20);
+            lblUsernsme.Size = new Size(63, 15);
             lblUsernsme.TabIndex = 1;
             lblUsernsme.Text = "Username:";
             lblUsernsme.TextAlign = ContentAlignment.MiddleCenter;
@@ -62,19 +62,18 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(96, 111);
-            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Location = new Point(84, 83);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(114, 27);
+            txtUsername.Size = new Size(100, 23);
             txtUsername.TabIndex = 2;
             txtUsername.TextChanged += txtUsername_TextChanged;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(17, 208);
+            lblPassword.Location = new Point(15, 156);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(73, 20);
+            lblPassword.Size = new Size(60, 15);
             lblPassword.TabIndex = 3;
             lblPassword.Text = "Password:";
             lblPassword.TextAlign = ContentAlignment.MiddleCenter;
@@ -82,38 +81,35 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(96, 197);
-            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Location = new Point(84, 148);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
-            txtPassword.Size = new Size(114, 27);
+            txtPassword.Size = new Size(100, 23);
             txtPassword.TabIndex = 4;
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(122, 301);
-            btnLogin.Margin = new Padding(3, 4, 3, 4);
+            btnLogin.Location = new Point(107, 226);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(86, 31);
+            btnLogin.Size = new Size(75, 23);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             // 
             // btnCamcel
             // 
-            btnCamcel.Location = new Point(223, 301);
-            btnCamcel.Margin = new Padding(3, 4, 3, 4);
+            btnCamcel.Location = new Point(195, 226);
             btnCamcel.Name = "btnCamcel";
-            btnCamcel.Size = new Size(86, 31);
+            btnCamcel.Size = new Size(75, 23);
             btnCamcel.TabIndex = 6;
             btnCamcel.Text = "Cancel";
             btnCamcel.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(439, 348);
+            ClientSize = new Size(384, 261);
             Controls.Add(btnCamcel);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
@@ -122,7 +118,6 @@
             Controls.Add(lblUsernsme);
             Controls.Add(lblTitle);
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             Name = "LoginForm";
             StartPosition = FormStartPosition.CenterScreen;
