@@ -127,6 +127,7 @@
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add Customer";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btbDelete
             // 
@@ -157,6 +158,7 @@
             btnSearch.TabIndex = 5;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
@@ -165,6 +167,8 @@
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(114, 27);
             txtSearch.TabIndex = 6;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            txtSearch.KeyPress += txtSearch_KeyPress_1;
             // 
             // CustomerList
             // 
