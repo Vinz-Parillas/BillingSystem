@@ -20,36 +20,38 @@ namespace BillingSystem
         public CustomerList()
         {
             InitializeComponent();
-            LoadCustomers(); 
+            LoadCustomers();
         }
 
         private void dgvCustomers_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvCustomers.CurrentRow == null) return;
+            if (dgvCustomers.CurrentRow == null || dgvCustomers.CurrentRow.Index < 0) return;
 
-            // Safely grab the first column value (CustomerID) regardless of its column name
-            if (dgvCustomers.CurrentRow.Cells.Count > 0)
+            foreach (DataGridViewCell cell in dgvCustomers.CurrentRow.Cells)
             {
-                var idCell = dgvCustomers.CurrentRow.Cells[0].Value;
-                if (idCell != null && int.TryParse(idCell.ToString(), out int id))
+                if (cell.Value != null && int.TryParse(cell.Value.ToString(), out int id) && id > 0)
                 {
                     _selectedCustomerId = id;
+                    break;
                 }
             }
         }
 
         private void dgvCustomers_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvCustomers.Rows[e.RowIndex];
-                int customerId = Convert.ToInt32(row.Cells["CustomerID"].Value);
+            if (e.RowIndex < 0) return;
 
-                // Pass customerId to your edit form
-                AddCustomerForm editForm = new AddCustomerForm(customerId);
-                editForm.ShowDialog();
-                LoadCustomers();
+            // Scan the clicked row for the ID number
+            foreach (DataGridViewCell cell in dgvCustomers.Rows[e.RowIndex].Cells)
+            {
+                if (cell.Value != null && int.TryParse(cell.Value.ToString(), out int id) && id > 0)
+                {
+                    _selectedCustomerId = id;
+                    break;
+                }
             }
+
+            OpenEditForm();
         }
         private void OpenEditForm()
         {
@@ -91,10 +93,70 @@ namespace BillingSystem
                 MessageBox.Show($"Error loading customers:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void DeleteCustomer(int customerId)
+        {
+            try
+            {
+                using (var conn = DatabaseConnection.GetConnection())
+                {
+                    conn.Open();
+                    string sql = "DELETE FROM Customers WHERE CustomerID = @CustomerID;";
+                    using (var cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CustomerID", customerId);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Customer deleted successfully.", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadCustomers();
+                            _selectedCustomerId = 0;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Customer could not be deleted. It may no longer exist.", "Delete Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting customer:\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (_selectedCustomerId == 0)
+            {
+                MessageBox.Show("Please select a customer to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            DialogResult confirm = MessageBox.Show(
+                "Are you sure you want to delete this customer?\nAll billing records for this customer will also be deleted.",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                DeleteCustomer(_selectedCustomerId);
+            }
+        }
         private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btbDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddCustomerForm addCustomerForm = new AddCustomerForm();
+            addCustomerForm.ShowDialog();
+            LoadCustomers();
         }
     }
 }

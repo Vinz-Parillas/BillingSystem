@@ -129,6 +129,7 @@
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add Customer";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btbDelete
             // 
@@ -139,6 +140,7 @@
             btbDelete.TabIndex = 3;
             btbDelete.Text = "Delete";
             btbDelete.UseVisualStyleBackColor = true;
+            btbDelete.Click += btnDelete_Click;
             // 
             // btnLogout
             // 

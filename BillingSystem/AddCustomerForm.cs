@@ -15,13 +15,13 @@ namespace BillingSystem
     public partial class AddCustomerForm : Form
     {
         private int _editCustomerId = 0;
-
+      
         public AddCustomerForm()
         {
             InitializeComponent();
             _editCustomerId = 0;
         }
-
+       
         public AddCustomerForm(int customerId)
         {
             InitializeComponent();
@@ -226,9 +226,6 @@ namespace BillingSystem
             return new MySqlConnection(connStr);
         }
 
-        private void AddCustomerForm_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
