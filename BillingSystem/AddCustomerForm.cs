@@ -225,5 +225,10 @@ namespace BillingSystem
             }
             return new MySqlConnection(connStr);
         }
+
+        private void AddCustomerForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

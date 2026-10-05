@@ -183,7 +183,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "CustomerList";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Billing System - Customer List";
+            Text = "Billing System - Customer List (Flores)";
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
             ResumeLayout(false);
             PerformLayout();
