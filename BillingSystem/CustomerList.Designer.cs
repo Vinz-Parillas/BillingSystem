@@ -30,12 +30,12 @@
         {
             lblTitle = new Label();
             dgvCustomers = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
+            CustomerID = new DataGridViewTextBoxColumn();
+            FullName = new DataGridViewTextBoxColumn();
+            Address = new DataGridViewTextBoxColumn();
+            ContactNumber = new DataGridViewTextBoxColumn();
+            Email = new DataGridViewTextBoxColumn();
+            Balance = new DataGridViewTextBoxColumn();
             btnAdd = new Button();
             btbDelete = new Button();
             btnLogout = new Button();
@@ -48,9 +48,9 @@
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblTitle.Location = new Point(69, 36);
+            lblTitle.Location = new Point(60, 27);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(170, 32);
+            lblTitle.Size = new Size(133, 25);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Customer List";
             // 
@@ -58,119 +58,120 @@
             // 
             dgvCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCustomers.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5, Column6 });
-            dgvCustomers.Location = new Point(69, 96);
-            dgvCustomers.Margin = new Padding(3, 4, 3, 4);
+            dgvCustomers.Columns.AddRange(new DataGridViewColumn[] { CustomerID, FullName, Address, ContactNumber, Email, Balance });
+            dgvCustomers.Location = new Point(60, 72);
             dgvCustomers.Name = "dgvCustomers";
             dgvCustomers.ReadOnly = true;
             dgvCustomers.RowHeadersWidth = 51;
             dgvCustomers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCustomers.Size = new Size(735, 417);
+            dgvCustomers.Size = new Size(643, 313);
             dgvCustomers.TabIndex = 1;
             dgvCustomers.CellContentClick += dgvCustomers_CellContentClick;
+            dgvCustomers.CellDoubleClick += dgvCustomers_CellDoubleClick;
+            dgvCustomers.SelectionChanged += dgvCustomers_SelectionChanged;
             // 
-            // Column1
+            // CustomerID
             // 
-            Column1.DataPropertyName = "CustomerID";
-            Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
+            CustomerID.DataPropertyName = "CustomerID";
+            CustomerID.HeaderText = "ID";
+            CustomerID.MinimumWidth = 6;
+            CustomerID.Name = "CustomerID";
+            CustomerID.ReadOnly = true;
             // 
-            // Column2
+            // FullName
             // 
-            Column2.DataPropertyName = "FullName";
-            Column2.HeaderText = "Full Name";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
+            FullName.DataPropertyName = "FullName";
+            FullName.HeaderText = "Full Name";
+            FullName.MinimumWidth = 6;
+            FullName.Name = "FullName";
+            FullName.ReadOnly = true;
             // 
-            // Column3
+            // Address
             // 
-            Column3.DataPropertyName = "Adress";
-            Column3.HeaderText = "Adress";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
+            Address.DataPropertyName = "Address";
+            Address.HeaderText = "Address";
+            Address.MinimumWidth = 6;
+            Address.Name = "Address";
+            Address.ReadOnly = true;
             // 
-            // Column4
+            // ContactNumber
             // 
-            Column4.DataPropertyName = "ContactNumber";
-            Column4.HeaderText = "Contact No.";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
+            ContactNumber.DataPropertyName = "ContactNumber";
+            ContactNumber.HeaderText = "Contact No.";
+            ContactNumber.MinimumWidth = 6;
+            ContactNumber.Name = "ContactNumber";
+            ContactNumber.ReadOnly = true;
             // 
-            // Column5
+            // Email
             // 
-            Column5.DataPropertyName = "Email";
-            Column5.HeaderText = "Email";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.ReadOnly = true;
+            Email.DataPropertyName = "Email";
+            Email.HeaderText = "Email";
+            Email.MinimumWidth = 6;
+            Email.Name = "Email";
+            Email.ReadOnly = true;
             // 
-            // Column6
+            // Balance
             // 
-            Column6.DataPropertyName = "Balance";
-            Column6.HeaderText = "Balance";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.ReadOnly = true;
+            Balance.DataPropertyName = "Balance";
+            Balance.HeaderText = "Balance";
+            Balance.MinimumWidth = 6;
+            Balance.Name = "Balance";
+            Balance.ReadOnly = true;
             // 
             // btnAdd
             // 
             btnAdd.AutoSize = true;
-            btnAdd.Location = new Point(378, 535);
-            btnAdd.Margin = new Padding(3, 4, 3, 4);
+            btnAdd.Location = new Point(331, 401);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(114, 33);
+            btnAdd.Size = new Size(100, 25);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add Customer";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // btbDelete
             // 
-            btbDelete.Location = new Point(79, 535);
-            btbDelete.Margin = new Padding(3, 4, 3, 4);
+            btbDelete.Location = new Point(69, 401);
             btbDelete.Name = "btbDelete";
-            btbDelete.Size = new Size(86, 31);
+            btbDelete.Size = new Size(75, 23);
             btbDelete.TabIndex = 3;
             btbDelete.Text = "Delete";
             btbDelete.UseVisualStyleBackColor = true;
+            btbDelete.Click += btbDelete_Click;
             // 
             // btnLogout
             // 
-            btnLogout.Location = new Point(706, 537);
-            btnLogout.Margin = new Padding(3, 4, 3, 4);
+            btnLogout.Location = new Point(618, 403);
             btnLogout.Name = "btnLogout";
-            btnLogout.Size = new Size(86, 31);
+            btnLogout.Size = new Size(75, 23);
             btnLogout.TabIndex = 4;
             btnLogout.Text = "Logout";
             btnLogout.UseVisualStyleBackColor = true;
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(587, 41);
-            btnSearch.Margin = new Padding(3, 4, 3, 4);
+            btnSearch.Location = new Point(514, 31);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(86, 31);
+            btnSearch.Size = new Size(75, 23);
             btnSearch.TabIndex = 5;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(689, 39);
-            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Location = new Point(603, 29);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(114, 27);
+            txtSearch.Size = new Size(100, 23);
             txtSearch.TabIndex = 6;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            txtSearch.KeyPress += txtSearch_KeyPress;
             // 
             // CustomerList
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(896, 615);
+            ClientSize = new Size(784, 461);
             Controls.Add(txtSearch);
             Controls.Add(btnSearch);
             Controls.Add(btnLogout);
@@ -178,10 +179,10 @@
             Controls.Add(btnAdd);
             Controls.Add(dgvCustomers);
             Controls.Add(lblTitle);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "CustomerList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Billing System - Customer List (Flores)";
+            Load += CustomerList_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCustomers).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -196,11 +197,11 @@
         private Button btnLogout;
         private Button btnSearch;
         private TextBox txtSearch;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn CustomerID;
+        private DataGridViewTextBoxColumn FullName;
+        private DataGridViewTextBoxColumn Address;
+        private DataGridViewTextBoxColumn ContactNumber;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn Balance;
     }
 }

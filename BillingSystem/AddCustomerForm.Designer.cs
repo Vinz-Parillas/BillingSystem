@@ -70,6 +70,7 @@
             txtFullName.Name = "txtFullName";
             txtFullName.Size = new Size(100, 23);
             txtFullName.TabIndex = 2;
+            txtFullName.TextChanged += txtFullName_TextChanged;
             // 
             // lblAddress
             // 
@@ -146,6 +147,7 @@
             btnSave.TabIndex = 11;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnClear
             // 
@@ -155,6 +157,7 @@
             btnClear.TabIndex = 12;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnBack
             // 
@@ -164,6 +167,7 @@
             btnBack.TabIndex = 13;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = true;
+            btnBack.Click += btnBack_Click;
             // 
             // AddCustomerForm
             // 
